@@ -3,19 +3,19 @@ var today = new Date();
 var todayMonth = today.getMonth();
 var todayYear = today.getYear();
 
-var FourOhOneBonds = document.getElementById("FourOhOneBonds").value;
-var FourOhOneDomestic = document.getElementById("FourOhOneDomestic").value;
-var FourOhOneInternational = document.getElementById("FourOhOneInternational").value;
-var BrokerageBonds = document.getElementById("BrokerageBonds").value;
-var BrokerageDomestic = document.getElementById("BrokerageDomestic").value;
-var BrokerageInternational = document.getElementById("BrokerageInternational").value;
-var IRABonds = document.getElementById("IRABonds").value;
-var IRADomestic = document.getElementById("IRADomestic").value;
-var IRAInternational = document.getElementById("IRAInternational").value;
-var MonthlyInvestment = document.getElementById("MonthlyInvestment").value;
-var BondAllocation = document.getElementById("BondAllocation").value;
-var DomesticAllocation = document.getElementById("DomesticAllocation").value;
-var InternationalAllocation = document.getElementById("InternationalAllocation").value;
+var FourOhOneBonds = Number(document.getElementById("FourOhOneBonds").value);
+var FourOhOneDomestic = Number(document.getElementById("FourOhOneDomestic").value);
+var FourOhOneInternational = Number(document.getElementById("FourOhOneInternational").value);
+var BrokerageBonds = Number(document.getElementById("BrokerageBonds").value);
+var BrokerageDomestic = Number(document.getElementById("BrokerageDomestic").values;
+var BrokerageInternational = Number(document.getElementById("BrokerageInternational").value);
+var IRABonds = Number(document.getElementById("IRABonds").value);
+var IRADomestic = Number(document.getElementById("IRADomestic").value);
+var IRAInternational = Number(document.getElementById("IRAInternational").value);
+var MonthlyInvestment = Number(document.getElementById("MonthlyInvestment").value);
+var BondAllocation = Number(document.getElementById("BondAllocation").values;
+var DomesticAllocation = Number(document.getElementById("DomesticAllocation").values;
+var InternationalAllocation = Number(document.getElementById("InternationalAllocation").value);
 
 var Portfolio = {IRA: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
              Taxable: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
@@ -40,9 +40,9 @@ Portfolio.Taxable.International = BrokerageInternational;
 Portfolio.IRA.Bond = IRABonds;
 Portfolio.IRA.Domestic = IRADomestic;
 Portfolio.IRA.International = IRAInternational;
-DesiredRatio.Bond = BondAllocation;
-DesiredRatio.Domestic = DomesticAllocation;
-DesiredRatio.International = InternationalAllocation;
+DesiredRatio.Bond = BondAllocation * .01;
+DesiredRatio.Domestic = DomesticAllocation * .01;
+DesiredRatio.International = InternationalAllocation * .01;
 
 function CalculateFuture(account) {
   if (account.Future == true) {
