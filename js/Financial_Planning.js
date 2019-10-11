@@ -7,14 +7,14 @@ var FourOhOneBonds = Number(document.getElementById("FourOhOneBonds").value);
 var FourOhOneDomestic = Number(document.getElementById("FourOhOneDomestic").value);
 var FourOhOneInternational = Number(document.getElementById("FourOhOneInternational").value);
 var BrokerageBonds = Number(document.getElementById("BrokerageBonds").value);
-var BrokerageDomestic = Number(document.getElementById("BrokerageDomestic").values;
+var BrokerageDomestic = Number(document.getElementById("BrokerageDomestic").value);
 var BrokerageInternational = Number(document.getElementById("BrokerageInternational").value);
 var IRABonds = Number(document.getElementById("IRABonds").value);
 var IRADomestic = Number(document.getElementById("IRADomestic").value);
 var IRAInternational = Number(document.getElementById("IRAInternational").value);
 var MonthlyInvestment = Number(document.getElementById("MonthlyInvestment").value);
-var BondAllocation = Number(document.getElementById("BondAllocation").values;
-var DomesticAllocation = Number(document.getElementById("DomesticAllocation").values;
+var BondAllocation = Number(document.getElementById("BondAllocation").value);
+var DomesticAllocation = Number(document.getElementById("DomesticAllocation").value);
 var InternationalAllocation = Number(document.getElementById("InternationalAllocation").value);
 
 var Portfolio = {IRA: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
@@ -23,7 +23,7 @@ var Portfolio = {IRA: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Do
 var DesiredRatio = {Domestic: 0, International: 0, Bond: 0};
 var Monthly = {FourOhOne: 0, IRA: 0, Taxable: 0};
 var Months = 12;
-var Rollover = "Yes";
+var Rollover = "No";
 var FourOhOne = {Future: false, Months: 0, Limit: 19000, Past: {PreviousContributions: false, Amount: 0},
                   RemainingMonths: 0, FuturePayment: 0};
 var IRA = {Future: false, Months: 0, Limit: 6000, Past: {PreviousContributions: false, Amount: 0},
