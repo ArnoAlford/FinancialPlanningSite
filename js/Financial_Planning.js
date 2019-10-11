@@ -1,6 +1,21 @@
+function Financial_Planning() {
 var today = new Date();
 var todayMonth = today.getMonth();
 var todayYear = today.getYear();
+
+var FourOhOneBonds = document.getElementById("FourOhOneBonds").value;
+var FourOhOneDomestic = document.getElementById("FourOhOneDomestic").value;
+var FourOhOneInternational = document.getElementById("FourOhOneInternational").value;
+var BrokerageBonds = document.getElementById("BrokerageBonds").value;
+var BrokerageDomestic = document.getElementById("BrokerageDomestic").value;
+var BrokerageInternational = document.getElementById("BrokerageInternational").value;
+var IRABonds = document.getElementById("IRABonds").value;
+var IRADomestic = document.getElementById("IRADomestic").value;
+var IRAInternational = document.getElementById("IRAInternational").value;
+var MonthlyInvestment = document.getElementById("MonthlyInvestment").value;
+var BondAllocation = document.getElementById("BondAllocation").value;
+var DomesticAllocation = document.getElementById("DomesticAllocation").value;
+var InternationalAllocation = document.getElementById("InternationalAllocation").value;
 
 var Portfolio = {IRA: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
              Taxable: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
@@ -15,6 +30,19 @@ var IRA = {Future: false, Months: 0, Limit: 6000, Past: {PreviousContributions: 
           RemainingMonths: 0, FuturePayment: 0};
 var Result = new Array();
 var MonthlyInvestmentSnapshot = MonthlyInvestment
+
+Portfolio.FourOhOne.Bond = FourOhOneBonds;
+Portfolio.FourOhOne.Domestic = FourOhOneDomestic;
+Portfolio.FourOhOne.International = FourOhOneInternational;
+Portfolio.Taxable.Bond = BrokerageBonds;
+Portfolio.Taxable.Domestic = BrokerageDomestic;
+Portfolio.Taxable.International = BrokerageInternational;
+Portfolio.IRA.Bond = IRABonds;
+Portfolio.IRA.Domestic = IRADomestic;
+Portfolio.IRA.International = IRAInternational;
+DesiredRatio.Bond = BondAllocation;
+DesiredRatio.Domestic = DomesticAllocation;
+DesiredRatio.International = InternationalAllocation;
 
 function CalculateFuture(account) {
   if (account.Future == true) {
@@ -119,3 +147,6 @@ for (b = 0; b < Months; b++) {
   Rollover = "No";
   Result[b] = jsonCopy(Portfolio);
 };
+console.log(Portfolio);
+console.log(Result);
+}

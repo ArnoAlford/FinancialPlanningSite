@@ -76,7 +76,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-<form>
+<form onsubmit="return false">
   <div class="form-row">
         <div class="col-auto mb-1">
                 <p class="font-weight-bold mt-5">401k</p>
@@ -255,7 +255,7 @@
     <h5 class="card-text">When do you plan to open the account?</h5>
           <div class="col-auto mb-3">
       <div class="input-group">
-        <input type="number" class="form-control" id="PlannedFourOhOneMonthlyInvestment" placeholder="Number of Months" aria-describedby="inputGroupPrepend2" required>
+        <input type="number" class="form-control" id="PlannedFourOhOneMonthlyInvestment" placeholder="Number of Months" aria-describedby="inputGroupPrepend2">
           <div class="input-group-append">
             <span class="input-group-text">Months</span>
           </div>
@@ -309,7 +309,7 @@
 <h5 class="card-text">When do you plan to open the account?</h5>
     <div class="col-auto mb-3">
 <div class="input-group">
-  <input type="number" class="form-control" id="PlannedIRAMonthlyInvestment" placeholder="Number of Months" aria-describedby="inputGroupPrepend2" required>
+  <input type="number" class="form-control" id="PlannedIRAMonthlyInvestment" placeholder="Number of Months" aria-describedby="inputGroupPrepend2">
     <div class="input-group-append">
       <span class="input-group-text">Months</span>
     </div>
@@ -332,7 +332,7 @@
   </div>
 </div>
   </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
+  <button class="btn btn-primary" onclick="Financial_Planning()" type="submit">Submit form</button>
 </form>
                 </div>
               </div>
