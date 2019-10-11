@@ -1,20 +1,20 @@
 var today = new Date();
 
-var Portfolio = {IRA: {Domestic: 5714, International: 0, Bond: 4726, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
-             Taxable: {Domestic: 5401, International: 3959, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
-             FourOhOne: {Domestic: 8599, International: 3666, Bond: 3128, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}}};
-var DesiredRatio = {Domestic: .525, International: .225, Bond: .25};
-var Monthly = {FourOhOne: 0, IRA: 4000, Taxable: 5100};
-var Months = 20;
+var Portfolio = {IRA: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
+             Taxable: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
+             FourOhOne: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}}};
+var DesiredRatio = {Domestic: 0, International: 0, Bond: 0};
+var Monthly = {FourOhOne: 0, IRA: 0, Taxable: 0};
+var Months = 12;
 var Rollover = "Yes";
-var FourOhOne = {Future: true, Months: 8, Limit: 19000, Past: {PreviousContributions: false, Amount: 0},
+var FourOhOne = {Future: false, Months: 0, Limit: 19000, Past: {PreviousContributions: false, Amount: 0},
                   RemainingMonths: 0, FuturePayment: 0};
-var IRA = {Future: true, Months: 8, Limit: 6000, Past: {PreviousContributions: false, Amount: 0},
+var IRA = {Future: false, Months: 0, Limit: 6000, Past: {PreviousContributions: false, Amount: 0},
           RemainingMonths: 0, FuturePayment: 0};
 var Result = new Array();
 
 function CalculateFuture(account) {
-  if (account.Future = true) {
+  if (account.Future == true) {
   	var todayYear = today.getYear()
     var FutureDate = new Date(today.setMonth(today.getMonth() + account.Months));
     var FutureMonth = FutureDate.getMonth()
@@ -28,6 +28,21 @@ function CalculateFuture(account) {
   }
   account.FuturePayment = account.Limit / account.RemainingMonths;
  }}
+
+ function CalculateMonthly(MonthlyInvestmentFunction, fund, account) {
+   if (account.Future == false) {
+     var todayMonth = today.getMonth()
+     account.RemainingMonths = 12 - todayMonth;
+   if (account.Past.PreviousContributions == true) {
+     account.Limit = account.Limit - account.Past.Amount;
+   } if ((account.Limit / account.RemainingMonths) > MonthlyInvestment) {
+       Monthly[fund] = MonthlyInvestmentFunction;
+       MonthlyInvestment = 0;
+   } else {
+       Monthly[fund] = (account.Limit / account.RemainingMonths);
+       MonthlyInvestment = MonthlyInvestmentFunction - (account.Limit / account.RemainingMonths);
+       Monthly.Taxable = MonthlyInvestment;
+ }}}
 
 function CalculateGrandTotal(Portfolio) {
   GrandTotal = Portfolio.FourOhOne.Domestic + Portfolio.IRA.Domestic + Portfolio.Taxable.Domestic +
@@ -59,6 +74,8 @@ if ( monthly > 0) {
 
 CalculateFuture(FourOhOne);
 CalculateFuture(IRA);
+CalculateMonthly(MonthlyInvestment, 'FourOhOne', FourOhOne);
+CalculateMonthly(MonthlyInvestment, 'IRA', IRA);
 for (b = 0; b < Months; b++) {
   var OldIRAMonthly = Monthly.IRA;
   if (FourOhOne.Future == true && b == FourOhOne.Months) {
