@@ -16,6 +16,8 @@ var MonthlyInvestment = Number(document.getElementById("MonthlyInvestment").valu
 var BondAllocation = Number(document.getElementById("BondAllocation").value);
 var DomesticAllocation = Number(document.getElementById("DomesticAllocation").value);
 var InternationalAllocation = Number(document.getElementById("InternationalAllocation").value);
+var FourOhOnePrevious = Number(document.getElementById("FourOhOnePrevious").value);
+var IRAPrevious = Number(document.getElementById("IRAPrevious").value);
 
 var Portfolio = {IRA: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
              Taxable: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
@@ -43,6 +45,16 @@ Portfolio.IRA.International = IRAInternational;
 DesiredRatio.Bond = BondAllocation * .01;
 DesiredRatio.Domestic = DomesticAllocation * .01;
 DesiredRatio.International = InternationalAllocation * .01;
+FourOhOne.Past.Amount = FourOhOnePrevious;
+IRA.Past.Amount = IRAPrevious;
+console.log(FourOhOne.Past.Amount);
+if (FourOhOne.Past.Amount > 0) {
+  FourOhOne.Past.PreviousContributions = true;
+}
+if (IRA.Past.Amount > 0) {
+  IRA.Past.PreviousContributions = true;
+}
+console.log(FourOhOne.Past.PreviousContributions);
 
 function CalculateFuture(account) {
   if (account.Future == true) {
@@ -68,12 +80,16 @@ function CalculateFuture(account) {
      account.Limit = account.Limit - account.Past.Amount;
      account.Past.PreviousContributions == false;
      account.Past.Amount = 0;
+     console.log(account.Limit);
    } if ((account.Limit / account.RemainingMonths) > MonthlyInvestment) {
+       // console.log(account.Limit);
        Monthly[fund] = MonthlyInvestmentFunction;
        MonthlyInvestment = 0;
+       console.log(fund);
    } else {
        Monthly[fund] = (account.Limit / account.RemainingMonths);
        MonthlyInvestment = MonthlyInvestmentFunction - (account.Limit / account.RemainingMonths);
+       console.log(fund);
  }}}
 
 function CalculateGrandTotal(Portfolio) {
@@ -146,7 +162,7 @@ for (b = 0; b < Months; b++) {
   Monthly.IRA = OldIRAMonthly;
   Rollover = "No";
   Result[b] = jsonCopy(Portfolio);
-};
+}
 console.log(Portfolio);
 console.log(Result);
 }
