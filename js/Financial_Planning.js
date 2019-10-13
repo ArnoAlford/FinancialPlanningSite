@@ -1,7 +1,7 @@
 function Financial_Planning() {
 today = new Date();
 var todayYear = today.getYear();
-var todayMonth = today.getMonth();
+todayMonth = today.getMonth();
 
 var FourOhOneBonds = Number(document.getElementById("FourOhOneBonds").value);
 var FourOhOneDomestic = Number(document.getElementById("FourOhOneDomestic").value);
@@ -73,9 +73,10 @@ function CalculateFuture(account) {
   account.FuturePayment = account.Limit / account.RemainingMonths;
  }}
 
- function CalculateMonthly(MonthlyInvestmentFunction, fund, account) {
+ function CalculateMonthly(MonthlyInvestmentFunction, fund, account, currentMonth) {
    if (account.Future == false) {
-     account.RemainingMonths = 12 - todayMonth;
+     console.log("TODAY'S MONTH", currentMonth);
+     account.RemainingMonths = 12 - currentMonth;
      console.log("Remaining Months", account.RemainingMonths);
    if (account.Past.PreviousContributions == true) {
      account.Limit = account.Limit - account.Past.Amount;
@@ -111,11 +112,10 @@ function resetMonthly() {
   MonthlyInvestment = MonthlyInvestmentSnapshot;
   FourOhOne.Limit = 19000;
   IRA.Limit = 6000;
-  CalculateMonthly(MonthlyInvestment, 'FourOhOne', FourOhOne);
-  CalculateMonthly(MonthlyInvestment, 'IRA', IRA);
-  Monthly.Taxable = MonthlyInvestment;
   todayYear = todayYear + 1;
-  todayMonth = 0;
+  CalculateMonthly(MonthlyInvestment, 'FourOhOne', FourOhOne, 0);
+  CalculateMonthly(MonthlyInvestment, 'IRA', IRA, 0);
+  Monthly.Taxable = MonthlyInvestment;
 }
 
 function CalculateAccount(account, fund, ratio, monthly) {
@@ -137,8 +137,8 @@ if ( monthly > 0) {
 
 CalculateFuture(FourOhOne);
 CalculateFuture(IRA);
-CalculateMonthly(MonthlyInvestment, 'FourOhOne', FourOhOne);
-CalculateMonthly(MonthlyInvestment, 'IRA', IRA);
+CalculateMonthly(MonthlyInvestment, 'FourOhOne', FourOhOne, todayMonth);
+CalculateMonthly(MonthlyInvestment, 'IRA', IRA, todayMonth);
 Monthly.Taxable = MonthlyInvestment;
 for (b = 0; b < Months; b++) {
   var TestDate = new Date(today.setMonth(today.getMonth() + b));
