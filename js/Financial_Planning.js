@@ -1,4 +1,13 @@
 function Financial_Planning() {
+
+var BondAllocation = Number(document.getElementById("BondAllocation").value);
+var DomesticAllocation = Number(document.getElementById("DomesticAllocation").value);
+var InternationalAllocation = Number(document.getElementById("InternationalAllocation").value);
+if ((BondAllocation + DomesticAllocation + InternationalAllocation) != 100) {
+  alert("Asset allocation must add up to 100%");
+  return false;
+}
+
 today = new Date();
 var todayYear = today.getYear();
 todayMonth = today.getMonth();
@@ -13,9 +22,6 @@ var IRABonds = Number(document.getElementById("IRABonds").value);
 var IRADomestic = Number(document.getElementById("IRADomestic").value);
 var IRAInternational = Number(document.getElementById("IRAInternational").value);
 var MonthlyInvestment = Number(document.getElementById("MonthlyInvestment").value);
-var BondAllocation = Number(document.getElementById("BondAllocation").value);
-var DomesticAllocation = Number(document.getElementById("DomesticAllocation").value);
-var InternationalAllocation = Number(document.getElementById("InternationalAllocation").value);
 var FourOhOnePrevious = Number(document.getElementById("FourOhOnePrevious").value);
 var IRAPrevious = Number(document.getElementById("IRAPrevious").value);
 var Rollover = document.getElementById("rolling401k1").checked;
