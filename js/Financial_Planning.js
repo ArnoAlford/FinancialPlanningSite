@@ -91,14 +91,19 @@ function CalculateFuture(account) {
      account.Past.PreviousContributions == false;
      account.Past.Amount = 0;
      console.log(fund, "Limit: ", account.Limit);
-   } if ((account.Limit / account.RemainingMonths) > MonthlyInvestment) {
+   } if (account.Exist == false) {
+       Monthly[fund] = 0;
+       console.log("Hit return statement")
+       return;
+   }
+     if ((account.Limit / account.RemainingMonths) > MonthlyInvestment) {
        Monthly[fund] = MonthlyInvestmentFunction;
        MonthlyInvestment = 0;
-       console.log("Leftover monthly investment", MonthlyInvestment);
+       console.log(fund, "Leftover monthly investment", MonthlyInvestment);
    } else {
        Monthly[fund] = (account.Limit / account.RemainingMonths);
        MonthlyInvestment = MonthlyInvestmentFunction - (account.Limit / account.RemainingMonths);
-       console.log("Leftover monthly investment", MonthlyInvestment);
+       console.log(fund, "Leftover monthly investment", MonthlyInvestment);
  }}}
 
 function CalculateGrandTotal(Portfolio) {
