@@ -18,6 +18,9 @@ var DomesticAllocation = Number(document.getElementById("DomesticAllocation").va
 var InternationalAllocation = Number(document.getElementById("InternationalAllocation").value);
 var FourOhOnePrevious = Number(document.getElementById("FourOhOnePrevious").value);
 var IRAPrevious = Number(document.getElementById("IRAPrevious").value);
+var Rollover = document.getElementById("rolling401k1").checked;
+var Have401k1 = document.getElementById("have401k1").checked;
+var HaveIRA1 = document.getElementById("haveIRA1").checked;
 
 var Portfolio = {IRA: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
              Taxable: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
@@ -25,14 +28,14 @@ var Portfolio = {IRA: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Do
 var DesiredRatio = {Domestic: 0, International: 0, Bond: 0};
 var Monthly = {FourOhOne: 0, IRA: 0, Taxable: 0};
 var Months = 12;
-var Rollover = "No";
-var FourOhOne = {Future: false, Months: 0, Limit: 19000, Past: {PreviousContributions: false, Amount: 0},
+var FourOhOne = {Exist: true, Future: false, Months: 0, Limit: 19000, Past: {PreviousContributions: false, Amount: 0},
                   RemainingMonths: 0, FuturePayment: 0};
-var IRA = {Future: false, Months: 0, Limit: 6000, Past: {PreviousContributions: false, Amount: 0},
+var IRA = {Exist: true, Future: false, Months: 0, Limit: 6000, Past: {PreviousContributions: false, Amount: 0},
           RemainingMonths: 0, FuturePayment: 0};
 var Result = new Array();
 var MonthlyInvestmentSnapshot = MonthlyInvestment
 
+console.log(typeof Rolling401k1);
 Portfolio.FourOhOne.Bond = FourOhOneBonds;
 Portfolio.FourOhOne.Domestic = FourOhOneDomestic;
 Portfolio.FourOhOne.International = FourOhOneInternational;
@@ -47,6 +50,11 @@ DesiredRatio.Domestic = DomesticAllocation * .01;
 DesiredRatio.International = InternationalAllocation * .01;
 FourOhOne.Past.Amount = FourOhOnePrevious;
 IRA.Past.Amount = IRAPrevious;
+FourOhOne.Exist = Have401k1;
+IRA.Exist = HaveIRA1;
+console.log("401k Exist: ", FourOhOne.Exist)
+console.log("IRA Exist: ", IRA.Exist)
+console.log("Rollover: ", Rollover)
 console.log("401 past contributions", FourOhOne.Past.Amount);
 if (FourOhOne.Past.Amount > 0) {
   FourOhOne.Past.PreviousContributions = true;
@@ -159,7 +167,7 @@ for (b = 0; b < Months; b++) {
   } if ( IRA.Future == true && b == IRA.Months) {
     Monthly.IRA = Math.round(IRA.FuturePayment);
     Monthly.Taxable = (Monthly.Taxable - Monthly.IRA);
-  } if (Rollover == "Yes") {
+  } if (Rollover == true) {
     Monthly.IRA = (Monthly.IRA + Portfolio.FourOhOne.Domestic + Portfolio.FourOhOne.International + Portfolio.FourOhOne.Bond);
     Portfolio.FourOhOne.Domestic = 0;
     Portfolio.FourOhOne.International = 0;
@@ -169,7 +177,7 @@ for (b = 0; b < Months; b++) {
   CalculateAccount(Portfolio.Taxable, 'International', DesiredRatio.International, Monthly.Taxable);
   CalculateAccount(Portfolio.FourOhOne, 'Bond', DesiredRatio.Bond, Monthly.FourOhOne);
   Monthly.IRA = OldIRAMonthly;
-  Rollover = "No";
+  Rollover == false;
   Result[b] = jsonCopy(Portfolio);
 }
 console.log(Portfolio);
