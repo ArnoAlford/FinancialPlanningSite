@@ -28,6 +28,9 @@ var Rollover = document.getElementById("rolling401k1").checked;
 var Have401k1 = document.getElementById("have401k1").checked;
 var Future401k = document.getElementById("have401k3").checked;
 var HaveIRA1 = document.getElementById("haveIRA1").checked;
+var FutureIRA = document.getElementById("haveIRA3").checked;
+var PlannedFourOhOneMonthlyInvestment = Number(document.getElementById("PlannedFourOhOneMonthlyInvestment").value);
+var PlannedIRAMonthlyInvestment = Number(document.getElementById("PlannedIRAMonthlyInvestment").value);
 
 var Portfolio = {IRA: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
              Taxable: {Domestic: 0, International: 0, Bond: 0, PaymentTotal: {Domestic: 0, International: 0, Bond: 0}},
@@ -59,7 +62,11 @@ IRA.Past.Amount = IRAPrevious;
 FourOhOne.Exist = Have401k1;
 FourOhOne.Future = Future401k;
 IRA.Exist = HaveIRA1;
+IRA.Future = FutureIRA;
+FourOhOne.Months = PlannedFourOhOneMonthlyInvestment;
+IRA.Months = PlannedIRAMonthlyInvestment;
 console.log("401k Exist: ", FourOhOne.Exist)
+console.log("401k Future: ", FourOhOne.Future)
 console.log("IRA Exist: ", IRA.Exist)
 console.log("Rollover: ", Rollover)
 console.log("401 past contributions", FourOhOne.Past.Amount);
@@ -70,23 +77,6 @@ if (IRA.Past.Amount > 0) {
   IRA.Past.PreviousContributions = true;
 }
 console.log("Made 401 past contributions?", FourOhOne.Past.PreviousContributions);
-
-function CalculateFuture(account) {
-  if (account.Future == true) {
-    var FutureDate = new Date(today.setMonth(today.getMonth() + account.Months));
-    var FutureMonth = FutureDate.getMonth()
-    var FutureYear = FutureDate.getYear()
-    account.RemainingMonths = 12 - FutureMonth;
-    if (todayYear != FutureYear) {
-    	account.Past.PreviousContributions == false;
-    	account.Past.Amount = 0;
-  } if (account.Past.PreviousContributions == true) {
-    	account.Limit = account.Limit - account.Past.Amount;
-      account.Past.PreviousContributions == false;
-    	account.Past.Amount = 0;
-  }
-  account.FuturePayment = account.Limit / account.RemainingMonths;
- }}
 
  function CalculateMonthly(MonthlyInvestmentFunction, fund, account, currentMonth) {
    if (account.Future == false) {
@@ -155,8 +145,6 @@ if ( monthly > 0) {
             return account
 }}}}}
 
-CalculateFuture(FourOhOne);
-CalculateFuture(IRA);
 CalculateMonthly(MonthlyInvestment, 'FourOhOne', FourOhOne, todayMonth);
 CalculateMonthly(MonthlyInvestment, 'IRA', IRA, todayMonth);
 Monthly.Taxable = MonthlyInvestment;
@@ -174,11 +162,15 @@ for (b = 0; b < Months; b++) {
   today = new Date();
   var OldIRAMonthly = Monthly.IRA;
   if (FourOhOne.Future == true && b == FourOhOne.Months) {
-    Monthly.FourOhOne = Math.round(FourOhOne.FuturePayment);
-    Monthly.Taxable = (Monthly.Taxable - Monthly.FourOhOne);
+    FourOhOne.Future = false;
+    FourOhOne.Exist = true;
+    CalculateMonthly(MonthlyInvestment, 'FourOhOne', FourOhOne, (todayMonth + b));
+    Monthly.Taxable = MonthlyInvestment;
   } if ( IRA.Future == true && b == IRA.Months) {
-    Monthly.IRA = Math.round(IRA.FuturePayment);
-    Monthly.Taxable = (Monthly.Taxable - Monthly.IRA);
+    IRA.Future = false;
+    IRA.Exist = true;
+    CalculateMonthly(MonthlyInvestment, 'IRA', IRA, (todayMonth + b));
+    Monthly.Taxable = MonthlyInvestment;
   } if (Rollover == true) {
     Monthly.IRA = (Monthly.IRA + Portfolio.FourOhOne.Domestic + Portfolio.FourOhOne.International + Portfolio.FourOhOne.Bond);
     Portfolio.FourOhOne.Domestic = 0;
@@ -192,6 +184,10 @@ for (b = 0; b < Months; b++) {
   Rollover == false;
   Result[b] = jsonCopy(Portfolio);
 }
+console.log(GrandTotal);
+console.log("Bond Ratio", ((Portfolio.FourOhOne.Bond + Portfolio.IRA.Bond + Portfolio.Taxable.Bond)/GrandTotal));
+console.log("Domestic Ratio", ((Portfolio.FourOhOne.Domestic + Portfolio.IRA.Domestic + Portfolio.Taxable.Domestic)/GrandTotal));
+console.log("International Ratio", ((Portfolio.FourOhOne.International + Portfolio.IRA.International + Portfolio.Taxable.International)/GrandTotal));
 console.log(Portfolio);
 console.log(Result);
 }
