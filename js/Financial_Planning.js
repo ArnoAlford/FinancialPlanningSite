@@ -8,6 +8,18 @@ if ((BondAllocation + DomesticAllocation + InternationalAllocation) != 100) {
   return false;
 }
 
+var FourOhOnePrevious = Number(document.getElementById("FourOhOnePrevious").value);
+if (FourOhOnePrevious > 19000 || FourOhOnePrevious < 0) {
+  alert("401k contributions cannot exceed 19000 for this year");
+  return false;
+}
+
+var IRAPrevious = Number(document.getElementById("IRAPrevious").value);
+if (IRAPrevious > 6000 || IRAPrevious < 0) {
+  alert("IRA contributions cannot exceed 6000 for this year");
+  return false;
+}
+
 today = new Date();
 var todayYear = today.getYear();
 todayMonth = today.getMonth();
@@ -22,8 +34,6 @@ var IRABonds = Number(document.getElementById("IRABonds").value);
 var IRADomestic = Number(document.getElementById("IRADomestic").value);
 var IRAInternational = Number(document.getElementById("IRAInternational").value);
 var MonthlyInvestment = Number(document.getElementById("MonthlyInvestment").value);
-var FourOhOnePrevious = Number(document.getElementById("FourOhOnePrevious").value);
-var IRAPrevious = Number(document.getElementById("IRAPrevious").value);
 var Rollover = document.getElementById("rolling401k1").checked;
 var Have401k1 = document.getElementById("have401k1").checked;
 var Future401k = document.getElementById("have401k3").checked;
