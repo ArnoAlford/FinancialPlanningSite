@@ -81,11 +81,15 @@ console.log("Made 401 past contributions?", FourOhOne.Past.PreviousContributions
  function CalculateMonthly(MonthlyInvestmentFunction, fund, account, currentMonth) {
    if (account.Future == false) {
      console.log("TODAY'S MONTH", currentMonth);
+   if (currentMonth > 12) {
+     currentMonth = currentMonth - 12
+   }
+     console.log("TODAY'S MONTH", currentMonth);
      account.RemainingMonths = 12 - currentMonth;
      console.log("Remaining Months", account.RemainingMonths);
    if (account.Past.PreviousContributions == true) {
      account.Limit = account.Limit - account.Past.Amount;
-     account.Past.PreviousContributions == false;
+     account.Past.PreviousContributions = false;
      account.Past.Amount = 0;
      console.log(fund, "Limit: ", account.Limit);
    } if (account.Exist == false) {
