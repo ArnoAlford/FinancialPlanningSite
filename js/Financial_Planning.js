@@ -181,7 +181,8 @@ for (b = 0; b < Months; b++) {
   CalculateAccount(Portfolio.Taxable, 'International', DesiredRatio.International, Monthly.Taxable);
   CalculateAccount(Portfolio.FourOhOne, 'Bond', DesiredRatio.Bond, Monthly.FourOhOne);
   Monthly.IRA = OldIRAMonthly;
-  Rollover == false;
+  Rollover = false;
+  console.log("Rollover2: ", Rollover)
   Result[b] = jsonCopy(Portfolio);
 }
 console.log(GrandTotal);
