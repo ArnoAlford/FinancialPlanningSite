@@ -153,6 +153,8 @@ function CalculatePayments(val) {
   document.getElementById("IRABondMonthlyIncrease").innerHTML = Math.round(Result[val].IRA.Bond);
   document.getElementById("IRADomesticMonthlyIncrease").innerHTML = Math.round(Result[val].IRA.Domestic);
   document.getElementById("IRAInternationalMonthlyIncrease").innerHTML = Math.round(Result[val].IRA.International);
+
+  document.getElementById('customRangeLabel').innerHTML = 'This Month';
 } else {
   x = val - 1;
   document.getElementById("FourOhOneBondMonthlyIncrease").innerHTML = Math.round(Result[val].FourOhOne.Bond - Result[x].FourOhOne.Bond);
@@ -164,6 +166,8 @@ function CalculatePayments(val) {
   document.getElementById("IRABondMonthlyIncrease").innerHTML = Math.round(Result[val].IRA.Bond - Result[x].IRA.Bond);
   document.getElementById("IRADomesticMonthlyIncrease").innerHTML = Math.round(Result[val].IRA.Domestic - Result[x].IRA.Domestic);
   document.getElementById("IRAInternationalMonthlyIncrease").innerHTML = Math.round(Result[val].IRA.International - Result[x].IRA.International);
+
+  document.getElementById('customRangeLabel').innerHTML = val.toString().concat(" Month(s) later");
 }
 
   document.getElementById("FourOhOneBondMonthlyIncrease2").innerHTML = Math.round(Result[val].FourOhOne.Bond);
