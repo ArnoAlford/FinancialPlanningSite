@@ -179,6 +179,9 @@ function CalculatePayments(val) {
   document.getElementById("IRABondMonthlyIncrease2").innerHTML = Math.round(Result[val].IRA.Bond);
   document.getElementById("IRADomesticMonthlyIncrease2").innerHTML = Math.round(Result[val].IRA.Domestic);
   document.getElementById("IRAInternationalMonthlyIncrease2").innerHTML = Math.round(Result[val].IRA.International);
+
+  var MonthlyIncreases = document.querySelectorAll("[id$='MonthlyIncrease'][innerHTML!='0']");
+  console.log(MonthlyIncreases);
 }
 
 function CalculateAccount(account, fund, ratio, monthly) {
