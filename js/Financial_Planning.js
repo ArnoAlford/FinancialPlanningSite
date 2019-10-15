@@ -143,15 +143,15 @@ function resetMonthly() {
 }
 
 function CalculatePayments(val) {
-  document.getElementById("FourOhOneBondMonthlyIncrease").innerHTML = Result[val].FourOhOne.Bond;
-  document.getElementById("FourOhOneDomesticMonthlyIncrease").innerHTML = Result[val].FourOhOne.Domestic;
-  document.getElementById("FourOhOneInternationalMonthlyIncrease").innerHTML = Result[val].FourOhOne.International;
-  document.getElementById("TaxableBondMonthlyIncrease").innerHTML = Result[val].Taxable.Bond;
-  document.getElementById("TaxableDomesticMonthlyIncrease").innerHTML = Result[val].Taxable.Domestic;
-  document.getElementById("TaxableInternationalMonthlyIncrease").innerHTML = Result[val].Taxable.International;
-  document.getElementById("IRABondMonthlyIncrease").innerHTML = Result[val].IRA.Bond;
-  document.getElementById("IRADomesticMonthlyIncrease").innerHTML = Result[val].IRA.Domestic;
-  document.getElementById("IRAInternationalMonthlyIncrease").innerHTML = Result[val].IRA.International;
+  document.getElementById("FourOhOneBondMonthlyIncrease").innerHTML = Math.round(Result[val].FourOhOne.Bond);
+  document.getElementById("FourOhOneDomesticMonthlyIncrease").innerHTML = Math.round(Result[val].FourOhOne.Domestic);
+  document.getElementById("FourOhOneInternationalMonthlyIncrease").innerHTML = Math.round(Result[val].FourOhOne.International);
+  document.getElementById("TaxableBondMonthlyIncrease").innerHTML = Math.round(Result[val].Taxable.Bond);
+  document.getElementById("TaxableDomesticMonthlyIncrease").innerHTML = Math.round(Result[val].Taxable.Domestic);
+  document.getElementById("TaxableInternationalMonthlyIncrease").innerHTML = Math.round(Result[val].Taxable.International);
+  document.getElementById("IRABondMonthlyIncrease").innerHTML = Math.round(Result[val].IRA.Bond);
+  document.getElementById("IRADomesticMonthlyIncrease").innerHTML = Math.round(Result[val].IRA.Domestic);
+  document.getElementById("IRAInternationalMonthlyIncrease").innerHTML = Math.round(Result[val].IRA.International);
 }
 
 function CalculateAccount(account, fund, ratio, monthly) {
