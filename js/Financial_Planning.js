@@ -180,6 +180,11 @@ function CalculatePayments(val) {
   document.getElementById("IRADomesticMonthlyIncrease2").innerHTML = Math.round(Result[val].IRA.Domestic);
   document.getElementById("IRAInternationalMonthlyIncrease2").innerHTML = Math.round(Result[val].IRA.International);
 
+  document.getElementById("htmlBondAllocation").innerHTML = (((Result[val].FourOhOne.Bond + Result[val].Taxable.Bond + Result[val].IRA.Bond)/Result[val].GrandTotal).toFixed(3));
+  document.getElementById("htmlDomesticAllocation").innerHTML = (((Result[val].FourOhOne.Domestic + Result[val].Taxable.Domestic + Result[val].IRA.Domestic)/Result[val].GrandTotal).toFixed(3));
+  document.getElementById("htmlInternationalAllocation").innerHTML = (((Result[val].FourOhOne.International + Result[val].Taxable.International + Result[val].IRA.International)/Result[val].GrandTotal).toFixed(3));
+  document.getElementById("htmlGrandTotal").innerHTML = Math.round(Result[val].GrandTotal);
+
   var MonthlyIncreases = document.querySelectorAll("[id$='MonthlyIncrease'][innerHTML!='0']");
   console.log(MonthlyIncreases);
 }
@@ -239,6 +244,8 @@ for (b = 0; b < Months; b++) {
   Monthly.IRA = OldIRAMonthly;
   Rollover = false;
   console.log("Rollover2: ", Rollover)
+  CalculateGrandTotal(Portfolio);
+  Portfolio.GrandTotal = Math.round(GrandTotal);
   Result[b] = jsonCopy(Portfolio);
 }
 console.log(GrandTotal);
