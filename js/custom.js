@@ -27,3 +27,11 @@ function toggleIRAOFF() {
     var z = document.getElementById("whenIRADIV");
     z.style.display = "none";
 }
+
+function toggleResultsDiv() {
+    var a = document.getElementById("mainDiv");
+    var c = document.getElementById("resultsDiv");
+    c.style.display = "none";
+    a.style.display = "block";
+    a.className = "animated--fade-in";
+}

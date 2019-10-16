@@ -46,7 +46,6 @@
 
       <!-- Main Content -->
       <div id="content">
-
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -56,7 +55,7 @@
 
 
             <!-- Area Chart -->
-            <div class="col-xl-12 col-lg-12" style="width: fit-content;margin: auto;">
+            <div class="col-xl-12 col-lg-12" id="mainDiv" style="width: fit-content;margin: auto;">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -339,6 +338,7 @@
             </div>
 
             <!-- Area Chart -->
+            <div class="container" id="resultsDiv" style="display: none;">
             <div class="row" style="width: fit-content;margin: auto;">
               <div class="card shadow mb-2 mx-1">
                 <!-- Card Header - Dropdown -->
@@ -582,6 +582,8 @@
             <div class="form-row" style="width: 33%;margin: auto;">
           <label for="customRange3" id="customRangeLabel">Example range</label>
           <input type="range" class="custom-range" min="0" max="11" step="1" id="customRange3" value=0 oninput="Financial_Planning(this.value)">
+          </div>
+            <button class="btn btn-primary" onclick="toggleResultsDiv()" type="submit">Back</button>
           </div>
           </div>
         </div>

@@ -142,6 +142,15 @@ function resetMonthly() {
   Monthly.Taxable = MonthlyInvestment;
 }
 
+function toggleMainDiv() {
+    var a = document.getElementById("mainDiv");
+    var c = document.getElementById("resultsDiv");
+    a.style.display = "none";
+    c.style.display = "block";
+    c.className = "animated--fade-in";
+}
+
+
 function CalculatePayments(val) {
   if (val == 0) {
   document.getElementById("FourOhOneBondMonthlyIncrease").innerHTML = Math.round(Result[val].FourOhOne.Bond - FourOhOneBonds);
@@ -254,5 +263,6 @@ console.log("Domestic Ratio", ((Portfolio.FourOhOne.Domestic + Portfolio.IRA.Dom
 console.log("International Ratio", ((Portfolio.FourOhOne.International + Portfolio.IRA.International + Portfolio.Taxable.International)/GrandTotal));
 console.log(Portfolio);
 console.log(Result);
+toggleMainDiv();
 CalculatePayments(val);
 }
