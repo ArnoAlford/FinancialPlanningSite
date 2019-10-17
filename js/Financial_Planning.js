@@ -135,7 +135,11 @@ function resetMonthly() {
   Monthly.Taxable = 0;
   MonthlyInvestment = MonthlyInvestmentSnapshot;
   FourOhOne.Limit = 19000;
+  FourOhOne.Past.PreviousContributions = false;
+  FourOhOne.Past.Amount = 0;
   IRA.Limit = 6000;
+  IRA.Past.PreviousContributions = false;
+  IRA.Past.Amount = 0;
   todayYear = todayYear + 1;
   CalculateMonthly(MonthlyInvestment, 'FourOhOne', FourOhOne, 0);
   CalculateMonthly(MonthlyInvestment, 'IRA', IRA, 0);
