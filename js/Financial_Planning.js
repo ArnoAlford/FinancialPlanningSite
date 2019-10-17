@@ -194,8 +194,53 @@ function CalculatePayments(val) {
   document.getElementById("htmlInternationalAllocation").innerHTML = (((Result[val].FourOhOne.International + Result[val].Taxable.International + Result[val].IRA.International)/Result[val].GrandTotal).toFixed(3));
   document.getElementById("htmlGrandTotal").innerHTML = Math.round(Result[val].GrandTotal);
 
-  var MonthlyIncreases = document.querySelectorAll("[id$='MonthlyIncrease'][innerHTML!='0']");
-  console.log(MonthlyIncreases);
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['401k Bonds', '401k International', '401k Domestic', 'Taxable Bonds', 'Taxable International', 'Taxable Domestic', 'IRA Bonds', 'IRA International', 'IRA Domestic'],
+        datasets: [{
+            label: '# of Votes',
+            data: [Math.round(Result[val].FourOhOne.Bond), Math.round(Result[val].FourOhOne.Domestic), Math.round(Result[val].FourOhOne.International),
+                   Math.round(Result[val].Taxable.Bond), Math.round(Result[val].Taxable.Domestic), Math.round(Result[val].Taxable.International),
+                   Math.round(Result[val].IRA.Bond), Math.round(Result[val].IRA.Domestic), Math.round(Result[val].IRA.International)],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+  // var MonthlyIncreases = document.querySelectorAll("[id$='MonthlyIncrease'][innerHTML!='0']");
+  // console.log(MonthlyIncreases);
 }
 
 function CalculateAccount(account, fund, ratio, monthly) {
