@@ -154,7 +154,6 @@ function toggleMainDiv() {
     c.className = "animated--fade-in";
 }
 
-
 function CalculatePayments(val) {
   if (val == 0) {
   document.getElementById("FourOhOneBondMonthlyIncrease").innerHTML = Math.round(Result[val].FourOhOne.Bond - FourOhOneBonds);
@@ -200,11 +199,12 @@ function CalculatePayments(val) {
 
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
+    showTooltips: false,
     type: 'bar',
     data: {
-        labels: ['401k Bonds', '401k International', '401k Domestic', 'Taxable Bonds', 'Taxable International', 'Taxable Domestic', 'IRA Bonds', 'IRA International', 'IRA Domestic'],
+        labels: ['401k Bonds', '401k Domestic', '401k International', 'Taxable Bonds', 'Taxable Domestic', 'Taxable International', 'IRA Bonds', 'IRA Domestic', 'IRA International'],
         datasets: [{
-            label: '# of Votes',
+            label: '$',
             data: [Math.round(Result[val].FourOhOne.Bond), Math.round(Result[val].FourOhOne.Domestic), Math.round(Result[val].FourOhOne.International),
                    Math.round(Result[val].Taxable.Bond), Math.round(Result[val].Taxable.Domestic), Math.round(Result[val].Taxable.International),
                    Math.round(Result[val].IRA.Bond), Math.round(Result[val].IRA.Domestic), Math.round(Result[val].IRA.International)],
@@ -234,6 +234,7 @@ function CalculatePayments(val) {
         }]
     },
     options: {
+        events: [],
         scales: {
             yAxes: [{
                 ticks: {
