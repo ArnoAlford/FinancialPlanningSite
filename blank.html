@@ -521,7 +521,9 @@
           </div>
 
           <!-- Area Chart -->
+          <div class="container">
           <div class="row" style="width: fit-content;margin: auto;">
+            <div class="col">
           <div class="card shadow mb-4 mx-1" style="max-height: 200px;">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -552,6 +554,8 @@
                       </div>
                       </div>
                       </div>
+                      </div>
+                      <div class="col">
                       <div class="card shadow mb-4 mx-1" style="max-height: 200px;">
                         <!-- Card Header - Dropdown -->
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -566,6 +570,14 @@
                             </div>
                             </div>
                             </div>
+                            </div>
+                            <div class="container">
+                            <div class="form-row" style="width: 80%;">
+                          <label for="customRange3" id="customRangeLabel">Example range</label>
+                          <input type="range" class="custom-range" min="0" max="11" step="1" id="customRange3" value=0 oninput="Financial_Planning(this.value)">
+                          </div>
+                          <button class="btn btn-primary" onclick="toggleResultsDiv()" type="submit">Back</button>
+                          </div>
                             </div>
                             <div class="card shadow mb-4 mx-1">
                               <!-- Card Header - Dropdown -->
@@ -584,14 +596,7 @@
                                   <canvas id="myChart" width="400" height="400"></canvas>
                                   </div>
                 </div>
-
-          <div class="container">
-            <div class="form-row" style="width: 33%;margin: auto;">
-          <label for="customRange3" id="customRangeLabel">Example range</label>
-          <input type="range" class="custom-range" min="0" max="11" step="1" id="customRange3" value=0 oninput="Financial_Planning(this.value)">
-          </div>
-            <button class="btn btn-primary" onclick="toggleResultsDiv()" type="submit">Back</button>
-          </div>
+                </div>
           </div>
         </div>
 
