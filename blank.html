@@ -54,7 +54,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 mt-4 text-gray-800">Turtfolio
+          <h1 class="h3 mb-4 mt-4 text-gray-800" id="header">Turtfolio
             <small class="text-muted">A portfolio balancer. Because slow and steady wins the race</small>
           </h1>
 
@@ -581,19 +581,11 @@
                             </div>
                             <div class="card shadow mb-4 mx-1">
                               <!-- Card Header - Dropdown -->
-                              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                              <div class="card-header py-1 d-flex flex-row align-items-center justify-content-between" style="padding-bottom: 0;">
                                 <h6 class="m-0 font-weight-bold text-primary">Grand Total</h6>
+                                <h4 id="htmlGrandTotal"></h4>
                               </div>
-                              <div class="card-body" style="padding-bottom: 0">
-                                <div class="form-row">
-                                  <div class="col mb-3" style="width: 33%;">
-                                    <div class="input-group">
-                                      <h3 id="htmlGrandTotal"></h3>
-                                    </div>
-                                  </div>
-                                  </div>
-                                  </div>
-                                  <canvas id="myChart" width="400" height="400"></canvas>
+                                  <canvas id="myChart" width="350" height="350"></canvas>
                                   </div>
                 </div>
                 </div>
