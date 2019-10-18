@@ -234,6 +234,9 @@ function CalculatePayments(val) {
         }]
     },
     options: {
+        legend: {
+          display: false
+        },
         events: [],
         scales: {
             yAxes: [{
