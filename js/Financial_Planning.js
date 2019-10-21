@@ -283,7 +283,9 @@ for (b = 0; b < Months; b++) {
   }
   delete today;
   today = new Date();
-  var OldIRAMonthly = Monthly.IRA;
+  if (Monthly.IRA > 0) {
+    var OldIRAMonthly = Monthly.IRA;
+  }
   if (FourOhOne.Future == true && b == FourOhOne.Months) {
     FourOhOne.Future = false;
     FourOhOne.Exist = true;
