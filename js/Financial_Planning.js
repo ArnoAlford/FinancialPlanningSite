@@ -283,9 +283,7 @@ for (b = 0; b < Months; b++) {
   }
   delete today;
   today = new Date();
-  if (Monthly.IRA > 0) {
-    var OldIRAMonthly = Monthly.IRA;
-  }
+  var OldIRAMonthly = Monthly.IRA;
   if (FourOhOne.Future == true && b == FourOhOne.Months) {
     FourOhOne.Future = false;
     FourOhOne.Exist = true;
@@ -296,6 +294,7 @@ for (b = 0; b < Months; b++) {
     IRA.Exist = true;
     CalculateMonthly(MonthlyInvestment, 'IRA', IRA, (todayMonth + b));
     Monthly.Taxable = MonthlyInvestment;
+    OldIRAMonthly = Monthly.IRA;
   } if (Rollover == true) {
     Monthly.IRA = (Monthly.IRA + Portfolio.FourOhOne.Domestic + Portfolio.FourOhOne.International + Portfolio.FourOhOne.Bond);
     Portfolio.FourOhOne.Domestic = 0;
