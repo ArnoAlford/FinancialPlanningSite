@@ -332,12 +332,23 @@
   <div class="card-body">
     <h5 class="card-text">Are you rolling over a 401k?</h5>
     <div class="custom-control custom-radio custom-control-inline">
-  <input type="radio" value="Yes" id="rolling401k1" name="rolling401k1" class="custom-control-input">
+  <input type="radio" value="Yes" onclick="chooseRolloverON()" id="rolling401k1" name="rolling401k1" class="custom-control-input">
   <label class="custom-control-label" for="rolling401k1">Yes</label>
 </div>
 <div class="custom-control custom-radio custom-control-inline">
-  <input type="radio" value="No" id="rolling401k2" name="rolling401k1" class="custom-control-input">
+  <input type="radio" value="No" onclick="chooseRolloverOFF()" id="rolling401k2" name="rolling401k1" class="custom-control-input">
   <label class="custom-control-label" for="rolling401k2">No</label>
+</div>
+<div class="card-body" id="rollIRAor401k" style="display: none;">
+<h5 class="card-text">Are you rolling over into your IRA or 401k?</h5>
+<div class="custom-control custom-radio custom-control-inline">
+<input type="radio" id="rollingChose401k" name="rollingChose401k" class="custom-control-input">
+<label class="custom-control-label" for="rollingChose401k">401k</label>
+</div>
+<div class="custom-control custom-radio custom-control-inline">
+<input type="radio" id="rollingChoseIRA" name="rollingChose401k" class="custom-control-input">
+<label class="custom-control-label" for="rollingChoseIRA">IRA</label>
+</div>
 </div>
   </div>
     <div class="card-body">

@@ -20,6 +20,14 @@ if (IRAPrevious > 6000 || IRAPrevious < 0) {
   return false;
 }
 
+var Have401k1 = document.getElementById("have401k1").checked;
+var HaveIRA1 = document.getElementById("haveIRA1").checked;
+var Rollover = document.getElementById("rolling401k1").checked;
+if (Rollover == true &&  HaveIRA1 == false){
+  alert("You do not have an IRA to Rollover into");
+  return false;
+}
+
 today = new Date();
 var todayYear = today.getYear();
 todayMonth = today.getMonth();
@@ -34,10 +42,7 @@ var IRABonds = Number(document.getElementById("IRABonds").value);
 var IRADomestic = Number(document.getElementById("IRADomestic").value);
 var IRAInternational = Number(document.getElementById("IRAInternational").value);
 var MonthlyInvestment = Number(document.getElementById("MonthlyInvestment").value);
-var Rollover = document.getElementById("rolling401k1").checked;
-var Have401k1 = document.getElementById("have401k1").checked;
 var Future401k = document.getElementById("have401k3").checked;
-var HaveIRA1 = document.getElementById("haveIRA1").checked;
 var FutureIRA = document.getElementById("haveIRA3").checked;
 var PlannedFourOhOneMonthlyInvestment = Number(document.getElementById("PlannedFourOhOneMonthlyInvestment").value);
 var PlannedIRAMonthlyInvestment = Number(document.getElementById("PlannedIRAMonthlyInvestment").value);

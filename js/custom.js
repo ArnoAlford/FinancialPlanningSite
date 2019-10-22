@@ -35,3 +35,18 @@ function toggleResultsDiv() {
     a.style.display = "block";
     a.className = "animated--fade-in";
 }
+
+function chooseRolloverON() {
+    var y = document.getElementById("rollIRAor401k");
+    if (y.style.display === "none") {
+    	y.className += ' fade show';
+        y.style.display = "block";
+    } else {
+        y.style.display = "none";
+    }
+}
+
+function chooseRolloverOFF() {
+    var y = document.getElementById("rollIRAor401k");
+    y.style.display = "none";
+}
