@@ -25,8 +25,12 @@ var HaveIRA1 = document.getElementById("haveIRA1").checked;
 var Rollover = document.getElementById("rolling401k1").checked;
 var RollingChose401k = document.getElementById("rollingChose401k").checked;
 var RollingChoseIRA = document.getElementById("rollingChoseIRA").checked;
-if (Rollover == true &&  HaveIRA1 == false){
-  alert("You do not have an IRA to Rollover into");
+if (Rollover == true &&  HaveIRA1 == false && RollingChoseIRA == true){
+  alert("You do not have a IRA to Rollover into");
+  return false;
+}
+if (Rollover == true &&  Have401k1 == false && RollingChose401k == true){
+  alert("You do not have a 401k to Rollover into");
   return false;
 }
 
