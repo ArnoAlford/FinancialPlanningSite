@@ -23,6 +23,8 @@ if (IRAPrevious > 6000 || IRAPrevious < 0) {
 var Have401k1 = document.getElementById("have401k1").checked;
 var HaveIRA1 = document.getElementById("haveIRA1").checked;
 var Rollover = document.getElementById("rolling401k1").checked;
+var RollingChose401k = document.getElementById("rollingChose401k").checked;
+var RollingChoseIRA = document.getElementById("rollingChoseIRA").checked;
 if (Rollover == true &&  HaveIRA1 == false){
   alert("You do not have an IRA to Rollover into");
   return false;
@@ -300,7 +302,12 @@ for (b = 0; b < Months; b++) {
     CalculateMonthly(MonthlyInvestment, 'IRA', IRA, (todayMonth + b));
     Monthly.Taxable = MonthlyInvestment;
     OldIRAMonthly = Monthly.IRA;
-  } if (Rollover == true) {
+  } if (Rollover == true && RollingChose401k == true) {
+    Monthly.FourOhOne = (Monthly.FourOhOne + Portfolio.FourOhOne.Domestic + Portfolio.FourOhOne.International + Portfolio.FourOhOne.Bond);
+    Portfolio.FourOhOne.Domestic = 0;
+    Portfolio.FourOhOne.International = 0;
+    Portfolio.FourOhOne.Bond = 0;
+  } if (Rollover == true && RollingChoseIRA == true) {
     Monthly.IRA = (Monthly.IRA + Portfolio.FourOhOne.Domestic + Portfolio.FourOhOne.International + Portfolio.FourOhOne.Bond);
     Portfolio.FourOhOne.Domestic = 0;
     Portfolio.FourOhOne.International = 0;
