@@ -295,11 +295,13 @@ for (b = 0; b < Months; b++) {
   delete today;
   today = new Date();
   var OldIRAMonthly = Monthly.IRA;
+  var Old401kMonthly = Monthly.FourOhOne;
   if (FourOhOne.Future == true && b == FourOhOne.Months) {
     FourOhOne.Future = false;
     FourOhOne.Exist = true;
     CalculateMonthly(MonthlyInvestment, 'FourOhOne', FourOhOne, (todayMonth + b));
     Monthly.Taxable = MonthlyInvestment;
+    Old401kMonthly = Monthly.FourOhOne;
   } if ( IRA.Future == true && b == IRA.Months) {
     IRA.Future = false;
     IRA.Exist = true;
@@ -321,6 +323,7 @@ for (b = 0; b < Months; b++) {
   CalculateAccount(Portfolio.Taxable, 'International', DesiredRatio.International, Monthly.Taxable);
   CalculateAccount(Portfolio.FourOhOne, 'Bond', DesiredRatio.Bond, Monthly.FourOhOne);
   Monthly.IRA = OldIRAMonthly;
+  Monthly.FourOhOne = Old401kMonthly;
   Rollover = false;
   console.log("Rollover2: ", Rollover)
   CalculateGrandTotal(Portfolio);
