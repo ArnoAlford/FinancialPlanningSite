@@ -50,3 +50,7 @@ function chooseRolloverOFF() {
     var y = document.getElementById("rollIRAor401k");
     y.style.display = "none";
 }
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
