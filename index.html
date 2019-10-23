@@ -64,9 +64,12 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 mt-4 text-gray-800" id="header">Tortfolio
+          <div class="row">
+          <img class="d-block d-sm-none" src="img/noarms.png" width="128" height="128">
+          <h1 class="h3 mb-4 mt-4 text-gray-800" id="header" style="width: 66%;">Tortfolio
             <small class="text-muted">A portfolio balancer for the slow and steady</small>
           </h1>
+          </div>
 
           <!-- Modal -->
           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -646,13 +649,20 @@
                             </div>
                             </div>
                             </div>
-                            <div class="container">
+                            <div class="container d-none d-sm-block">
                             <div class="form-row" style="width: 80%;">
                           <label for="customRange3" id="customRangeLabel">Example range</label>
                           <input type="range" class="custom-range" min="0" max="11" step="1" id="customRange3" value=0 oninput="Financial_Planning(this.value)">
                           </div>
                           <button class="btn btn-primary" onclick="toggleResultsDiv()" type="submit">Back</button>
                           </div>
+                          <!-- <div class="container d-block d-sm-none fixed-bottom">
+                          <div class="form-row" style="width: 80%;">
+                        <label for="customRange3" id="customRangeLabel">Example range</label>
+                        <input type="range" class="custom-range" min="0" max="11" step="1" id="customRange3" value=0 oninput="Financial_Planning(this.value)">
+                        </div>
+                        <button class="btn btn-primary" onclick="toggleResultsDiv()" type="submit">Back</button>
+                        </div> -->
                             </div>
                             <div class="card shadow mb-4 mx-1">
                               <!-- Card Header - Dropdown -->
